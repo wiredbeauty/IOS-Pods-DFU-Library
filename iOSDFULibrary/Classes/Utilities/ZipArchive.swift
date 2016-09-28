@@ -20,8 +20,6 @@
 * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-import Zip
-
 internal class ZipArchive {
     
     private init() {
@@ -40,22 +38,8 @@ internal class ZipArchive {
      - returns: list of URLs to unzipped files in the tmp folder
      */
     internal static func unzip(url:NSURL) throws -> [NSURL] {
-        let fileName = url.lastPathComponent
-        let destinationPath = try createTemporaryFolderPath(fileName!)
-        
-        // Unzip file to the destination folder
-        let destination = NSURL.init(fileURLWithPath: destinationPath)
-        try Zip.unzipFile(url, destination: destination, overwrite: true, password: nil, progress: nil)
-        
-        // Get folder content
-        let files = try getFilesFromDirectory(destinationPath)
-        
-        // Convert Strings to NSURLs
-        var urls = [NSURL]()
-        for file in files {
-            urls.append(NSURL.fileURLWithPath(destinationPath + file))
-        }
-        return urls
+        assertionFailure("not supported")
+        return []
     }
     
     /**
